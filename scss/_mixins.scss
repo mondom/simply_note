@@ -1,0 +1,10 @@
+@mixin btn-style {
+	// font-size: 2rem;
+	// margin-left: 0.4em;
+	// padding: 0.4em;
+	border: none;
+	background: transparent;
+	color: $font-color;
+	cursor: pointer;
+	transition: color 0.3s;
+}

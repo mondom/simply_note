@@ -1,4 +1,5 @@
 @import './colors';
+@import './mixins';
 
 * {
 	box-sizing: border-box;
@@ -6,11 +7,88 @@
 	padding: 0;
 }
 
+:root {
+	font-size: 62.5%;
+}
+
 body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: $background;
-	color: $font;
+	background-color: $background-color;
+	color: $font-color;
 	font-family: 'Poppins', sans-serif;
+	.wrapper {
+		width: 100%;
+		max-width: 800px;
+		padding: 2em;
+		.heading {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1em;
+			&__title {
+				font-size: 2.5rem;
+			}
+			&__button-box {
+				button {
+					@include btn-style;
+					font-size: 2rem;
+					margin-left: 0.4em;
+					padding: 0.4em;
+				}
+				button:hover {
+					color: $hover-color;
+				}
+			}
+		}
+		.note-area {
+			display: flex;
+			align-items: start;
+			flex-wrap: wrap;
+			.note {
+				width: 20rem;
+				margin: 2em;
+				border-radius: 8px;
+				background-color: $note-color;
+				overflow: hidden;
+				&__heading {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 1.5em;
+					background-color: $dark-note-color;
+				}
+				&__title {
+					font-size: 1.6rem;
+					font-weight: bold;
+				}
+
+				button {
+					@include btn-style;
+					padding: 0.3em;
+				}
+				button:hover {
+					color: $hover-color;
+				}
+				&__return-btn {
+					display: none;
+					font-size: 1.4rem;
+				}
+				&__delete-btn {
+					font-size: 1.6rem;
+				}
+				&__body {
+					padding: 1.1em;
+					font-size: 1.5rem;
+				}
+				&__footer{
+					font-size: 1.3rem;
+					padding: .5em;
+					text-align: center;
+					background-color: $dark-note-color;
+				}
+			}
+		}
+	}
 }

@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+:root {
+  font-size: 62.5%;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -11,4 +15,82 @@ body {
   background-color: black;
   color: #fff;
   font-family: "Poppins", sans-serif;
+}
+body .wrapper {
+  width: 100%;
+  max-width: 800px;
+  padding: 2em;
+}
+body .wrapper .heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+body .wrapper .heading__title {
+  font-size: 2.5rem;
+}
+body .wrapper .heading__button-box button {
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: 2rem;
+  margin-left: 0.4em;
+  padding: 0.4em;
+}
+body .wrapper .heading__button-box button:hover {
+  color: rgb(226, 192, 0);
+}
+body .wrapper .note-area {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+}
+body .wrapper .note-area .note {
+  width: 20rem;
+  margin: 2em;
+  border-radius: 8px;
+  background-color: rgb(48, 48, 48);
+  overflow: hidden;
+}
+body .wrapper .note-area .note__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em;
+  background-color: rgb(34, 34, 34);
+}
+body .wrapper .note-area .note__title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+body .wrapper .note-area .note button {
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 0.3em;
+}
+body .wrapper .note-area .note button:hover {
+  color: rgb(226, 192, 0);
+}
+body .wrapper .note-area .note__return-btn {
+  display: none;
+  font-size: 1.4rem;
+}
+body .wrapper .note-area .note__delete-btn {
+  font-size: 1.6rem;
+}
+body .wrapper .note-area .note__body {
+  padding: 1.1em;
+  font-size: 1.5rem;
+}
+body .wrapper .note-area .note__footer {
+  font-size: 1.3rem;
+  padding: 0.5em;
+  text-align: center;
+  background-color: rgb(34, 34, 34);
 }/*# sourceMappingURL=main.css.map */
