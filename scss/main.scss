@@ -12,6 +12,8 @@
 }
 
 body {
+	display: flex;
+	justify-content: center;
 	height: 100vh;
 	background-color: $background-color;
 	color: $font-color;
@@ -171,9 +173,10 @@ body {
 			display: flex;
 			font-size: 1.6rem;
 			padding: 1em 2em;
-		
+			max-width: 800px;
 			bottom: 0;
-			left: 0;
+			left: 50%;
+			transform: translate(-50%);
 			&__button-box {
 				top: 50%;
 				transform: translate(0, -50%);

@@ -9,6 +9,8 @@
 }
 
 body {
+  display: flex;
+  justify-content: center;
   height: 100vh;
   background-color: black;
   color: #fff;
@@ -172,8 +174,10 @@ body .wrapper .footer {
   display: flex;
   font-size: 1.6rem;
   padding: 1em 2em;
+  max-width: 800px;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translate(-50%);
 }
 body .wrapper .footer__button-box {
   top: 50%;
