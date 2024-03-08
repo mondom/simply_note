@@ -9,9 +9,7 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
   background-color: black;
   color: #fff;
   font-family: "Poppins", sans-serif;
@@ -26,6 +24,7 @@ body .wrapper .heading {
   justify-content: space-between;
   align-items: center;
   padding: 1em;
+  margin-bottom: 2em;
 }
 body .wrapper .heading__title {
   font-size: 2.5rem;
@@ -43,30 +42,34 @@ body .wrapper .heading__button-box button {
 body .wrapper .heading__button-box button:hover {
   color: rgb(226, 192, 0);
 }
-body .wrapper .note-area {
+body .wrapper .note-wrapper {
+  position: relative;
+}
+body .wrapper .note-wrapper .note-area {
   display: flex;
-  align-items: start;
+  display: none;
+  justify-content: center;
   flex-wrap: wrap;
 }
-body .wrapper .note-area .note {
-  width: 20rem;
+body .wrapper .note-wrapper .note-area .note {
+  width: 21rem;
   margin: 2em;
   border-radius: 8px;
   background-color: rgb(48, 48, 48);
   overflow: hidden;
 }
-body .wrapper .note-area .note__heading {
+body .wrapper .note-wrapper .note-area .note__heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5em;
   background-color: rgb(34, 34, 34);
 }
-body .wrapper .note-area .note__title {
+body .wrapper .note-wrapper .note-area .note__title {
   font-size: 1.6rem;
   font-weight: bold;
 }
-body .wrapper .note-area .note button {
+body .wrapper .note-wrapper .note-area .note button {
   border: none;
   background: transparent;
   color: #fff;
@@ -74,23 +77,132 @@ body .wrapper .note-area .note button {
   transition: color 0.3s;
   padding: 0.3em;
 }
-body .wrapper .note-area .note button:hover {
+body .wrapper .note-wrapper .note-area .note button:hover {
   color: rgb(226, 192, 0);
 }
-body .wrapper .note-area .note__return-btn {
+body .wrapper .note-wrapper .note-area .note__return-btn {
   display: none;
   font-size: 1.4rem;
 }
-body .wrapper .note-area .note__delete-btn {
+body .wrapper .note-wrapper .note-area .note__delete-btn {
   font-size: 1.6rem;
 }
-body .wrapper .note-area .note__body {
+body .wrapper .note-wrapper .note-area .note__body {
   padding: 1.1em;
   font-size: 1.5rem;
 }
-body .wrapper .note-area .note__footer {
+body .wrapper .note-wrapper .note-area .note__footer {
   font-size: 1.3rem;
   padding: 0.5em;
   text-align: center;
   background-color: rgb(34, 34, 34);
+}
+body .wrapper .note-wrapper .popup {
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+}
+body .wrapper .note-wrapper .popup__heading {
+  padding: 1em;
+  font-size: 2rem;
+}
+body .wrapper .note-wrapper .popup label {
+  font-size: 1.6rem;
+}
+body .wrapper .note-wrapper .popup textarea {
+  min-width: 90%;
+  max-width: 90%;
+  margin: 0.5em 0 3em 0;
+  padding: 0.7em 1em 0 1em;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(48, 48, 48);
+  color: #fff;
+}
+body .wrapper .note-wrapper .popup #popup-title {
+  min-height: 4rem;
+  max-height: 4rem;
+}
+body .wrapper .note-wrapper .popup #popup-text {
+  min-height: 15rem;
+  max-height: 18rem;
+}
+body .wrapper .note-wrapper .popup__error {
+  display: none;
+  font-size: 1.6rem;
+}
+body .wrapper .note-wrapper .popup__button-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin: 1.5em;
+  padding: 2em;
+}
+body .wrapper .note-wrapper .popup__button-box button {
+  font-size: 1.6rem;
+  padding: 1em 2em;
+  background: transparent;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+body .wrapper .note-wrapper .popup__button-box button:hover {
+  color: rgb(226, 192, 0);
+}
+body .wrapper .note-wrapper .trash-area {
+  display: flex;
+  display: none;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+body .wrapper .note-wrapper .trash-area__heading {
+  margin-bottom: 2em;
+}
+body .wrapper .footer {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  font-size: 1.6rem;
+  padding: 1em 2em;
+  bottom: 0;
+  left: 0;
+}
+body .wrapper .footer__button-box {
+  top: 50%;
+  transform: translate(0, -50%);
+  position: absolute;
+  right: 1.5em;
+}
+body .wrapper .footer__button-box button {
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: 1.8rem;
+  padding: 0.5em;
+  font-weight: bold;
+}
+body .wrapper .footer__button-box button:hover {
+  color: rgb(226, 192, 0);
+}
+body .wrapper .footer__remove-trash {
+  display: none;
+}
+
+@media (min-width: 557px) {
+  body .wrapper .note-wrapper .note-area {
+    align-items: start;
+  }
+  body .wrapper .note-wrapper .trash-area {
+    align-items: start;
+  }
 }/*# sourceMappingURL=main.css.map */
