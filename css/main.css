@@ -49,7 +49,6 @@ body .wrapper .note-wrapper {
 }
 body .wrapper .note-wrapper .note-area {
   display: flex;
-  display: none;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -120,7 +119,7 @@ body .wrapper .note-wrapper .popup label {
 body .wrapper .note-wrapper .popup textarea {
   min-width: 90%;
   max-width: 90%;
-  margin: 0.5em 0 3em 0;
+  margin: 0.5em 0 1.5em 0;
   padding: 0.7em 1em 0 1em;
   font-size: 1.6rem;
   border: none;
@@ -144,7 +143,6 @@ body .wrapper .note-wrapper .popup__button-box {
   display: flex;
   width: 100%;
   justify-content: space-around;
-  margin: 1.5em;
   padding: 2em;
 }
 body .wrapper .note-wrapper .popup__button-box button {
@@ -169,15 +167,16 @@ body .wrapper .note-wrapper .trash-area__heading {
   margin-bottom: 2em;
 }
 body .wrapper .footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
-  display: flex;
-  font-size: 1.6rem;
-  padding: 1em 2em;
   max-width: 800px;
   bottom: 0;
   left: 50%;
   transform: translate(-50%);
+  padding: 1em 2em;
+  display: flex;
+  font-size: 1.6rem;
+  background-color: black;
 }
 body .wrapper .footer__button-box {
   top: 50%;
@@ -200,6 +199,9 @@ body .wrapper .footer__button-box button:hover {
 }
 body .wrapper .footer__remove-trash {
   display: none;
+}
+body .wrapper .footer__show-trash {
+  display: flex;
 }
 
 @media (min-width: 557px) {
