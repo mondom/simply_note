@@ -247,12 +247,11 @@ body {
 					display: flex;
 					justify-content: center;
 					align-items: center;
-
+					visibility: hidden;
 					border-radius: 50%;
 					background-color: red;
 					.count-trash {
 						font-size: 1rem;
-						// color: $background-color;
 					}
 				}
 			}

@@ -17,7 +17,7 @@ let REMOVE_ALL_TRASH_BTN
 let SHOW_TRASH_AREA_BTN
 let FOOTER
 let HEADER
-let ID = 0
+let ID = 1
 
 const main = () => {
 	prepareDOMElements()
@@ -30,7 +30,6 @@ const prepareDOMElements = () => {
 	RETURN_NOTE_BTN = document.querySelector('.note__return-btn')
 	DELETE_NOTE_BTN = document.querySelector('.note__delete-btn')
 	NOTE = document.querySelector('.note-temp')
-
 	POPUP = document.querySelector('.popup')
 	POPUP_TITLE_TEXTAREA = document.querySelector('.popup-title')
 	POPUP_CONTENT_TEXTAREA = document.querySelector('.popup-text')
@@ -50,6 +49,7 @@ const prepareDOMEvents = () => {
 	ADD_NOTE_BTN.addEventListener('click', openPopup)
 	POPUP_DONE_BTN.addEventListener('click', addNewNote)
 	POPUP_CANCEL_BTN.addEventListener('click', closePopup)
+	NOTE_AREA.addEventListener('click', editNote)
 }
 
 const openPopup = () => {
@@ -76,10 +76,12 @@ const addNewNote = () => {
 }
 
 const createNewNote = () => {
-	const newNote = NOTE.content.cloneNode(true)
-	const noteTitle = newNote.querySelector('.note__title')
-	const noteContent = newNote.querySelector('.note__body-content')
-	const dateOfNote = newNote.querySelector('.note__date')
+	const newNoteTemp = NOTE.content.cloneNode(true)
+	const newNote = newNoteTemp.querySelector('.note')
+	const noteTitle = newNoteTemp.querySelector('.note__title')
+	const noteContent = newNoteTemp.querySelector('.note__body-content')
+	const dateOfNote = newNoteTemp.querySelector('.note__date')
+	newNote.setAttribute('id', `${ID}`)
 
 	noteTitle.textContent = POPUP_TITLE_TEXTAREA.value
 	noteContent.textContent = POPUP_CONTENT_TEXTAREA.value
@@ -106,9 +108,24 @@ const countNote = ID => {
 	NUMBER_OF_NOTE.style.visibility = 'visible'
 	if (ID === 1) {
 		NUMBER_OF_NOTE.textContent = `${ID} note`
-		
 	} else {
 		NUMBER_OF_NOTE.textContent = `${ID} notes`
+	}
+}
+
+const editNote = e => {
+	if (e.target.classList.contains('note__body') || e.target.classList.contains('note__body-content')) {
+		POPUP.style.display = 'flex'
+		NOTE_AREA.style.display = 'none'
+		FOOTER.style.display = 'none'
+		HEADER.style.display = 'none'
+
+		const noteToEdit = e.target.parentElement.parentElement.id
+
+		const editedNote = document.getElementById(noteToEdit)
+
+		POPUP_TITLE_TEXTAREA.value = editedNote.querySelector('.note__title').textContent
+		POPUP_CONTENT_TEXTAREA.value = editedNote.querySelector('.note__body-content').textContent
 	}
 }
 

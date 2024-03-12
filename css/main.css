@@ -242,6 +242,7 @@ body .wrapper .footer__show-trash .circle {
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
   border-radius: 50%;
   background-color: red;
 }
