@@ -79,7 +79,7 @@ body {
 						color: $hover-color;
 					}
 					&__return-btn {
-						display: none;
+						// display: none;
 						font-size: 1.4rem;
 					}
 					&__delete-btn {
@@ -118,7 +118,7 @@ body {
 				label {
 					font-size: 1.6rem;
 				}
-				textarea {
+				textarea, input {
 					min-width: 90%;
 					max-width: 90%;
 					margin: 0.5em 0 1.5em 0;
@@ -130,15 +130,17 @@ body {
 					color: $font-color;
 				}
 				#popup-title {
-					min-height: 4rem;
-					max-height: 4rem;
+					min-width: 70%;
+					max-width: 70%;
+					padding: 1rem;
+					text-align: center;
 				}
 				#popup-text {
 					min-height: 15rem;
 					max-height: 18rem;
 				}
 				&__error {
-					// display: none;
+					visibility: hidden;
 					font-size: 1.6rem;
 					color: $hover-color;
 				}

@@ -82,7 +82,6 @@ body .wrapper .note-wrapper .note-area .note button:hover {
   color: rgb(226, 192, 0);
 }
 body .wrapper .note-wrapper .note-area .note__return-btn {
-  display: none;
   font-size: 1.4rem;
 }
 body .wrapper .note-wrapper .note-area .note__delete-btn {
@@ -118,7 +117,7 @@ body .wrapper .note-wrapper .popup__heading {
 body .wrapper .note-wrapper .popup label {
   font-size: 1.6rem;
 }
-body .wrapper .note-wrapper .popup textarea {
+body .wrapper .note-wrapper .popup textarea, body .wrapper .note-wrapper .popup input {
   min-width: 90%;
   max-width: 90%;
   margin: 0.5em 0 1.5em 0;
@@ -130,14 +129,17 @@ body .wrapper .note-wrapper .popup textarea {
   color: #fff;
 }
 body .wrapper .note-wrapper .popup #popup-title {
-  min-height: 4rem;
-  max-height: 4rem;
+  min-width: 70%;
+  max-width: 70%;
+  padding: 1rem;
+  text-align: center;
 }
 body .wrapper .note-wrapper .popup #popup-text {
   min-height: 15rem;
   max-height: 18rem;
 }
 body .wrapper .note-wrapper .popup__error {
+  visibility: hidden;
   font-size: 1.6rem;
   color: rgb(226, 192, 0);
 }

@@ -26,7 +26,7 @@
         <div class="note-wrapper">
             <div class="note-area">
 
-                <div class="note" id="1">
+                <!-- <div class="note" id="1">
                     <div class="note__heading">
                         <p class="note__title">tytuł notatki</p>
                         <div class="note__button-box">
@@ -42,26 +42,8 @@
                     <div class="note__footer">
                         <p class="note__date">21.10.2024</p>
                     </div>
-                </div>
-                <div class="note" id="2">
-                    <div class="note__heading">
-                        <p class="note__title">tytuł notatki</p>
-                        <div class="note__button-box">
-                            <button class="note__return-btn"><i class="fa-solid fa-rotate-left"></i></button>
-                            <button class="note__delete-btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                    </div>
-                    <div class="note__body">
-                        <p class="note__body-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima,
-                            sunt!
-                        </p>
-
-                    </div>
-                    <div class="note__footer">
-                        <p class="note__date">21.10.2024</p>
-                    </div>
-                </div>
-                <div class="note" id="3">
+                </div> -->
+                <!-- <div class="note" id="2">
                     <div class="note__heading">
                         <p class="note__title">tytuł notatki</p>
                         <div class="note__button-box">
@@ -78,26 +60,42 @@
                     <div class="note__footer">
                         <p class="note__date">21.10.2024</p>
                     </div>
-                </div>
+                </div> -->
+                <!-- <div class="note" id="3">
+                    <div class="note__heading">
+                        <p class="note__title">tytuł notatki</p>
+                        <div class="note__button-box">
+                            <button class="note__return-btn"><i class="fa-solid fa-rotate-left"></i></button>
+                            <button class="note__delete-btn"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+                    <div class="note__body">
+                        <p class="note__body-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima,
+                            sunt!
+                        </p>
 
-                <template>
+                    </div>
+                    <div class="note__footer">
+                        <p class="note__date">21.10.2024</p>
+                    </div>
+                </div> -->
+
+                <template class = 'note-temp'>
                     <div class="note" id="1">
                         <div class="note__heading">
-                            <p class="note__title">tytuł notatki</p>
+                            <p class="note__title"></p>
                             <div class="note__button-box">
                                 <button class="note__return-btn"><i class="fa-solid fa-rotate-left"></i></button>
                                 <button class="note__delete-btn"><i class="fa-solid fa-xmark"></i></button>
                             </div>
                         </div>
                         <div class="note__body">
-                            <p class="note__body-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Minima,
-                                sunt!
+                            <p class="note__body-content">
                             </p>
 
                         </div>
                         <div class="note__footer">
-                            <p class="note__date">21.10.2024</p>
+                            <p class="note__date"></p>
                         </div>
                     </div>
                 </template>
@@ -107,7 +105,7 @@
             <div class="popup">
                 <h2 class="popup__heading">adding note</h2>
                 <label for="popup-title">enter a note title</label>
-                <textarea id="popup-title" class="popup-title"></textarea>
+                <input maxlength="13" id="popup-title" class="popup-title"></input>
 
                 <label for="popup-text">enter the note content</label>
                 <textarea id="popup-text" class="popup-text"></textarea>
@@ -128,7 +126,7 @@
         </div>
 
         <div class="footer">
-            <p class="footer__count-note"><span class="number-of-note">5</span> notes</p>
+            <p class="footer__count-note"></p>
             <div class="footer__button-box">
                 <button class="footer__remove-trash">remove all</button>
                 <button class="footer__show-trash"><i class="fa-regular fa-trash-can"></i></button>
