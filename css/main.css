@@ -57,7 +57,6 @@ body .wrapper .note-wrapper .note-area .note {
   margin: 2em;
   border-radius: 8px;
   background-color: rgb(48, 48, 48);
-  overflow: hidden;
 }
 body .wrapper .note-wrapper .note-area .note__heading {
   display: flex;
@@ -88,8 +87,27 @@ body .wrapper .note-wrapper .note-area .note__delete-btn {
   font-size: 1.6rem;
 }
 body .wrapper .note-wrapper .note-area .note__body {
+  position: relative;
   padding: 1.1em;
   font-size: 1.5rem;
+  cursor: pointer;
+}
+body .wrapper .note-wrapper .note-area .note__body::before {
+  display: none;
+  position: absolute;
+  top: -1em;
+  right: -1em;
+  width: 30%;
+  content: "edit note";
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5em 0.8em;
+  border-radius: 5px;
+  background-color: #fff;
+  color: black;
+}
+body .wrapper .note-wrapper .note-area .note__body:hover::before {
+  display: block;
 }
 body .wrapper .note-wrapper .note-area .note__footer {
   font-size: 1.3rem;
@@ -117,7 +135,8 @@ body .wrapper .note-wrapper .popup__heading {
 body .wrapper .note-wrapper .popup label {
   font-size: 1.6rem;
 }
-body .wrapper .note-wrapper .popup textarea, body .wrapper .note-wrapper .popup input {
+body .wrapper .note-wrapper .popup textarea,
+body .wrapper .note-wrapper .popup input {
   min-width: 90%;
   max-width: 90%;
   margin: 0.5em 0 1.5em 0;
@@ -182,6 +201,9 @@ body .wrapper .footer {
   font-size: 1.6rem;
   background-color: black;
 }
+body .wrapper .footer__count-note {
+  visibility: hidden;
+}
 body .wrapper .footer__button-box {
   top: 50%;
   transform: translate(0, -50%);
@@ -189,23 +211,42 @@ body .wrapper .footer__button-box {
   right: 1.5em;
 }
 body .wrapper .footer__button-box button {
+  position: relative;
   border: none;
   background: transparent;
   color: #fff;
   cursor: pointer;
   transition: color 0.3s;
-  font-size: 1.8rem;
+  font-size: 2rem;
   padding: 0.5em;
   font-weight: bold;
 }
 body .wrapper .footer__button-box button:hover {
   color: rgb(226, 192, 0);
 }
+body .wrapper .footer__button-box button:hover .circle {
+  color: #fff;
+}
 body .wrapper .footer__remove-trash {
   display: none;
 }
 body .wrapper .footer__show-trash {
   display: flex;
+}
+body .wrapper .footer__show-trash .circle {
+  position: absolute;
+  width: 1.6rem;
+  height: 1.6rem;
+  right: 0.2em;
+  bottom: 0.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: red;
+}
+body .wrapper .footer__show-trash .circle .count-trash {
+  font-size: 1rem;
 }
 
 @media (orientation: portrait) {

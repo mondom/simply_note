@@ -95,14 +95,18 @@ const createNewNote = () => {
 	dateOfNote.textContent = `${day}.${month}.${year}`
 
 	NOTE_AREA.appendChild(newNote)
+	POPUP_TITLE_TEXTAREA.value = ''
+	POPUP_CONTENT_TEXTAREA.value = ''
 	ID++
 	countNote(ID)
 	closePopup()
 }
 
 const countNote = ID => {
+	NUMBER_OF_NOTE.style.visibility = 'visible'
 	if (ID === 1) {
 		NUMBER_OF_NOTE.textContent = `${ID} note`
+		
 	} else {
 		NUMBER_OF_NOTE.textContent = `${ID} notes`
 	}
