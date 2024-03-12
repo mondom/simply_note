@@ -20,7 +20,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 	.wrapper {
 		width: 100%;
-		max-width: 800px;
+		max-width: 900px;
 		padding: 2em;
 
 		.heading {
@@ -46,7 +46,7 @@ body {
 		}
 		.note-wrapper {
 			position: relative;
-		
+
 			.note-area {
 				display: flex;
 				// display: none;
@@ -105,13 +105,11 @@ body {
 				padding: 2em;
 				top: 0;
 				left: 0;
-				
 				display: flex;
 				display: none;
 				justify-content: space-around;
 				align-items: center;
 				flex-direction: column;
-				
 
 				&__heading {
 					margin-bottom: 1em;
@@ -212,6 +210,17 @@ body {
 	}
 }
 
+@media (orientation: portrait) {
+	body {
+		.wrapper {
+			.note-wrapper {
+				.popup {
+					height: 100vh;
+				}
+			}
+		}
+	}
+}
 
 @media (min-width: 557px) {
 	body {
@@ -222,6 +231,78 @@ body {
 				}
 				.trash-area {
 					align-items: start;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 768px) and (orientation: landscape) {
+	body {
+		.wrapper {
+			.note-wrapper {
+				.popup {
+					height: 100vh;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 768px) {
+	body {
+		.wrapper {
+			.heading {
+				&__title {
+					font-size: 3.5rem;
+				}
+				&__button-box {
+					button {
+						@include btn-style;
+						font-size: 2.8rem;
+					}
+				}
+			}
+			.note-wrapper {
+				.note-area {
+					.note {
+						width: 24rem;
+
+						&__body {
+							font-size: 1.6rem;
+						}
+						&__footer {
+							font-size: 1.4rem;
+						}
+					}
+				}
+				.popup {
+					&__heading {
+						font-size: 3.5rem;
+					}
+					label {
+						font-size: 1.8rem;
+					}
+					textarea {
+						font-size: 1.8rem;
+					}
+
+					&__error {
+						// display: none;
+						font-size: 1.8rem;
+					}
+					&__button-box {
+						button {
+							font-size: 1.8rem;
+						}
+					}
+				}
+			}
+			.footer {
+				font-size: 1.8rem;
+
+				&__button-box {
+					button {
+						font-size: 2.2rem;
+					}
 				}
 			}
 		}

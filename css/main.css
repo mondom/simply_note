@@ -18,7 +18,7 @@ body {
 }
 body .wrapper {
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   padding: 2em;
 }
 body .wrapper .heading {
@@ -206,11 +206,64 @@ body .wrapper .footer__show-trash {
   display: flex;
 }
 
+@media (orientation: portrait) {
+  body .wrapper .note-wrapper .popup {
+    height: 100vh;
+  }
+}
 @media (min-width: 557px) {
   body .wrapper .note-wrapper .note-area {
     align-items: start;
   }
   body .wrapper .note-wrapper .trash-area {
     align-items: start;
+  }
+}
+@media (min-width: 768px) and (orientation: landscape) {
+  body .wrapper .note-wrapper .popup {
+    height: 100vh;
+  }
+}
+@media (min-width: 768px) {
+  body .wrapper .heading__title {
+    font-size: 3.5rem;
+  }
+  body .wrapper .heading__button-box button {
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: 2.8rem;
+  }
+  body .wrapper .note-wrapper .note-area .note {
+    width: 24rem;
+  }
+  body .wrapper .note-wrapper .note-area .note__body {
+    font-size: 1.6rem;
+  }
+  body .wrapper .note-wrapper .note-area .note__footer {
+    font-size: 1.4rem;
+  }
+  body .wrapper .note-wrapper .popup__heading {
+    font-size: 3.5rem;
+  }
+  body .wrapper .note-wrapper .popup label {
+    font-size: 1.8rem;
+  }
+  body .wrapper .note-wrapper .popup textarea {
+    font-size: 1.8rem;
+  }
+  body .wrapper .note-wrapper .popup__error {
+    font-size: 1.8rem;
+  }
+  body .wrapper .note-wrapper .popup__button-box button {
+    font-size: 1.8rem;
+  }
+  body .wrapper .footer {
+    font-size: 1.8rem;
+  }
+  body .wrapper .footer__button-box button {
+    font-size: 2.2rem;
   }
 }/*# sourceMappingURL=main.css.map */
