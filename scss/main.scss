@@ -185,6 +185,9 @@ body {
 						color: $hover-color;
 					}
 				}
+				&__edit-done-btn{
+					display: none;
+				}
 			}
 			.trash-area {
 				display: flex;

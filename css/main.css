@@ -180,6 +180,9 @@ body .wrapper .note-wrapper .popup__button-box button {
 body .wrapper .note-wrapper .popup__button-box button:hover {
   color: rgb(226, 192, 0);
 }
+body .wrapper .note-wrapper .popup__edit-done-btn {
+  display: none;
+}
 body .wrapper .note-wrapper .trash-area {
   display: flex;
   display: none;

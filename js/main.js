@@ -4,7 +4,7 @@ let RETURN_NOTE_BTN
 let DELETE_NOTE_BTN
 let NOTE
 let NOTE_AREA
-
+let POPUP_EDIT_DONE_BTN
 let POPUP
 let POPUP_TITLE_TEXTAREA
 let POPUP_CONTENT_TEXTAREA
@@ -35,6 +35,7 @@ const prepareDOMElements = () => {
 	POPUP_CONTENT_TEXTAREA = document.querySelector('.popup-text')
 	POPUP_ERROR = document.querySelector('.popup__error')
 	POPUP_DONE_BTN = document.querySelector('.popup__done-btn')
+	POPUP_EDIT_DONE_BTN = document.querySelector('.popup__edit-done-btn')
 	POPUP_CANCEL_BTN = document.querySelector('.popup__cancel-btn')
 	TRASH_AREA = document.querySelector('.trash-area')
 	NUMBER_OF_NOTE = document.querySelector('.footer__count-note')
@@ -51,12 +52,19 @@ const prepareDOMEvents = () => {
 	POPUP_CANCEL_BTN.addEventListener('click', closePopup)
 	NOTE_AREA.addEventListener('click', editNote)
 }
-
-const openPopup = () => {
+const activePopup = () => {
 	POPUP.style.display = 'flex'
 	NOTE_AREA.style.display = 'none'
 	FOOTER.style.display = 'none'
 	HEADER.style.display = 'none'
+}
+
+const openPopup = () => {
+	activePopup()
+	POPUP_EDIT_DONE_BTN.style.display = 'none'
+	POPUP_DONE_BTN.style.display = 'flex'
+	POPUP_TITLE_TEXTAREA.value = ''
+	POPUP_CONTENT_TEXTAREA.value = ''
 }
 
 const closePopup = () => {
@@ -97,8 +105,7 @@ const createNewNote = () => {
 	dateOfNote.textContent = `${day}.${month}.${year}`
 
 	NOTE_AREA.appendChild(newNote)
-	POPUP_TITLE_TEXTAREA.value = ''
-	POPUP_CONTENT_TEXTAREA.value = ''
+
 	ID++
 	countNote(ID)
 	closePopup()
@@ -115,10 +122,9 @@ const countNote = ID => {
 
 const editNote = e => {
 	if (e.target.classList.contains('note__body') || e.target.classList.contains('note__body-content')) {
-		POPUP.style.display = 'flex'
-		NOTE_AREA.style.display = 'none'
-		FOOTER.style.display = 'none'
-		HEADER.style.display = 'none'
+		POPUP_EDIT_DONE_BTN.style.display = 'flex'
+		POPUP_DONE_BTN.style.display = 'none'
+		activePopup()
 
 		const noteToEdit = e.target.parentElement.parentElement.id
 
