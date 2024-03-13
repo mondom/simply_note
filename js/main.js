@@ -20,6 +20,7 @@ let SHOW_TRASH_AREA_BTN
 let FOOTER
 let HEADER
 let ID = 1
+let NOTE_ARR = []
 
 const main = () => {
 	prepareDOMElements()
@@ -98,7 +99,7 @@ const createNewNote = () => {
 
 	RETURN_NOTE_BTN = newNoteTemp.querySelector('.note__return-btn')
 	DELETE_NOTE_BTN = newNoteTemp.querySelector('.note__delete-btn')
-	DELETE_NOTE_BTN.setAttribute('onclick', `moveToTrash(${ID})`)
+	DELETE_NOTE_BTN.setAttribute('onclick', `moveToTrash(${ID}); countNote()`)
 
 	noteTitle.textContent = POPUP_TITLE_TEXTAREA.value
 	noteContent.textContent = POPUP_CONTENT_TEXTAREA.value
@@ -113,19 +114,27 @@ const createNewNote = () => {
 
 	dateOfNote.textContent = `${day}.${month}.${year}`
 
+	
 	NOTE_AREA.appendChild(newNote)
+	NOTE_ARR.push(newNote)
+	
 
-	countNote(ID)
+	countNote()
 	ID++
 	closePopup()
 }
 
-const countNote = ID => {
+
+
+const countNote = () => {
 	NUMBER_OF_NOTE.style.visibility = 'visible'
-	if (ID === 1) {
-		NUMBER_OF_NOTE.textContent = `${ID} note`
+	let amountNotes = NOTE_ARR.length
+	console.log(amountNotes);
+	
+	if (NOTE_ARR.length === 1) {
+		NUMBER_OF_NOTE.textContent = `${amountNotes} note`
 	} else {
-		NUMBER_OF_NOTE.textContent = `${ID} notes`
+		NUMBER_OF_NOTE.textContent = `${amountNotes} notes`
 	}
 }
 
@@ -179,6 +188,8 @@ const backToNotes = () => {
 const moveToTrash = id => {
 	const noteToMove = document.getElementById(id)
 	NOTE_AREA.removeChild(noteToMove)
+	countNote(ID)
+	NOTE_ARR.splice(noteToMove)
 	TRASH_AREA.appendChild(noteToMove)
 }
 
