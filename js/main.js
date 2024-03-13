@@ -1,5 +1,6 @@
 let ADD_NOTE_BTN
 let SEARCH_NOTE_BTN
+let BACK_TO_NOTE_BTN
 let RETURN_NOTE_BTN
 let DELETE_NOTE_BTN
 let NOTE
@@ -45,6 +46,7 @@ const prepareDOMElements = () => {
 	NOTE_AREA = document.querySelector('.note-area')
 	FOOTER = document.querySelector('.footer')
 	HEADER = document.querySelector('.heading')
+	BACK_TO_NOTE_BTN = document.querySelector('.heading__back-btn')
 }
 
 const prepareDOMEvents = () => {
@@ -53,6 +55,8 @@ const prepareDOMEvents = () => {
 	POPUP_EDIT_DONE_BTN.addEventListener('click', changeNote)
 	POPUP_CANCEL_BTN.addEventListener('click', closePopup)
 	NOTE_AREA.addEventListener('click', editNote)
+	SHOW_TRASH_AREA_BTN.addEventListener('click', openTrash)
+	BACK_TO_NOTE_BTN.addEventListener('click', backToNotes)
 }
 const activePopup = () => {
 	POPUP.style.display = 'flex'
@@ -145,6 +149,29 @@ const changeNote = () => {
 		EDITED_NOTE.querySelector('.note__body-content').textContent = POPUP_CONTENT_TEXTAREA.value
 		POPUP_ERROR.style.visibility = 'hidden'
 		closePopup()
+	}
+}
+
+const openTrash = () => {
+	NOTE_AREA.style.display = 'none'
+	TRASH_AREA.style.display = 'flex'
+	BACK_TO_NOTE_BTN.style.display = 'flex'
+	ADD_NOTE_BTN.style.display = 'none'
+	SEARCH_NOTE_BTN.style.display = 'none'
+	NUMBER_OF_NOTE.style.visibility = 'hidden'
+}
+
+const backToNotes = () => {
+	NOTE_AREA.style.display = 'flex'
+	TRASH_AREA.style.display = 'none'
+	BACK_TO_NOTE_BTN.style.display = 'none'
+	ADD_NOTE_BTN.style.display = 'inline-block'
+	SEARCH_NOTE_BTN.style.display = 'inline-block'
+	
+	if (NUMBER_OF_NOTE.textContent === '$') {
+		NUMBER_OF_NOTE.style.visibility = 'hidden'
+	} else {
+		NUMBER_OF_NOTE.style.visibility = 'visible'
 	}
 }
 

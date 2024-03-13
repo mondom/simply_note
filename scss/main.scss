@@ -43,6 +43,9 @@ body {
 					color: $hover-color;
 				}
 			}
+			&__back-btn{
+				display: none;
+			}
 		}
 		.note-wrapper {
 			position: relative;
