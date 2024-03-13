@@ -11,6 +11,7 @@ let POPUP_CONTENT_TEXTAREA
 let POPUP_ERROR
 let POPUP_DONE_BTN
 let POPUP_CANCEL_BTN
+let EDITED_NOTE
 let TRASH_AREA
 let NUMBER_OF_NOTE
 let REMOVE_ALL_TRASH_BTN
@@ -49,6 +50,7 @@ const prepareDOMElements = () => {
 const prepareDOMEvents = () => {
 	ADD_NOTE_BTN.addEventListener('click', openPopup)
 	POPUP_DONE_BTN.addEventListener('click', addNewNote)
+	POPUP_EDIT_DONE_BTN.addEventListener('click', changeNote)
 	POPUP_CANCEL_BTN.addEventListener('click', closePopup)
 	NOTE_AREA.addEventListener('click', editNote)
 }
@@ -106,8 +108,8 @@ const createNewNote = () => {
 
 	NOTE_AREA.appendChild(newNote)
 
-	ID++
 	countNote(ID)
+	ID++
 	closePopup()
 }
 
@@ -128,10 +130,21 @@ const editNote = e => {
 
 		const noteToEdit = e.target.parentElement.parentElement.id
 
-		const editedNote = document.getElementById(noteToEdit)
+		EDITED_NOTE = document.getElementById(noteToEdit)
 
-		POPUP_TITLE_TEXTAREA.value = editedNote.querySelector('.note__title').textContent
-		POPUP_CONTENT_TEXTAREA.value = editedNote.querySelector('.note__body-content').textContent
+		POPUP_TITLE_TEXTAREA.value = EDITED_NOTE.querySelector('.note__title').textContent
+		POPUP_CONTENT_TEXTAREA.value = EDITED_NOTE.querySelector('.note__body-content').textContent
+	}
+}
+
+const changeNote = () => {
+	if (POPUP_TITLE_TEXTAREA.value == '' || POPUP_CONTENT_TEXTAREA.value == '') {
+		POPUP_ERROR.style.visibility = 'visible'
+	} else {
+		EDITED_NOTE.querySelector('.note__title').textContent = POPUP_TITLE_TEXTAREA.value
+		EDITED_NOTE.querySelector('.note__body-content').textContent = POPUP_CONTENT_TEXTAREA.value
+		POPUP_ERROR.style.visibility = 'hidden'
+		closePopup()
 	}
 }
 
