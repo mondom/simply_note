@@ -43,7 +43,7 @@ body {
 					color: $hover-color;
 				}
 			}
-			&__back-btn{
+			&__back-btn {
 				display: none;
 			}
 		}
@@ -57,43 +57,7 @@ body {
 				flex-wrap: wrap;
 
 				.note {
-					width: 21rem;
-					margin: 2em;
-					border-radius: 8px;
-					background-color: $note-color;
-					// overflow: hidden;
-					&__heading {
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-						padding: 1.5em;
-						background-color: $dark-note-color;
-					}
-					&__title {
-						font-size: 1.6rem;
-						font-weight: bold;
-					}
-
-					button {
-						@include btn-style;
-						padding: 0.3em;
-					}
-					button:hover {
-						color: $hover-color;
-					}
-					&__return-btn {
-						// display: none;
-						font-size: 1.4rem;
-					}
-					&__delete-btn {
-						font-size: 1.6rem;
-					}
-					&__body {
-						position: relative;
-						padding: 1.1em;
-						font-size: 1.5rem;
-						cursor: pointer;
-					}
+					@include note-style;
 					&__body::before {
 						display: none;
 						position: absolute;
@@ -111,13 +75,6 @@ body {
 
 					&__body:hover::before {
 						display: block;
-					}
-
-					&__footer {
-						font-size: 1.3rem;
-						padding: 0.5em;
-						text-align: center;
-						background-color: $dark-note-color;
 					}
 				}
 			}
@@ -188,7 +145,7 @@ body {
 						color: $hover-color;
 					}
 				}
-				&__edit-done-btn{
+				&__edit-done-btn {
 					display: none;
 				}
 			}
@@ -200,6 +157,9 @@ body {
 
 				&__heading {
 					margin-bottom: 2em;
+				}
+				.note {
+					@include note-style;
 				}
 			}
 		}

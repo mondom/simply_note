@@ -29,8 +29,6 @@ const main = () => {
 const prepareDOMElements = () => {
 	ADD_NOTE_BTN = document.querySelector('.heading__add-btn')
 	SEARCH_NOTE_BTN = document.querySelector('.heading__search-btn')
-	RETURN_NOTE_BTN = document.querySelector('.note__return-btn')
-	DELETE_NOTE_BTN = document.querySelector('.note__delete-btn')
 	NOTE = document.querySelector('.note-temp')
 	POPUP = document.querySelector('.popup')
 	POPUP_TITLE_TEXTAREA = document.querySelector('.popup-title')
@@ -57,6 +55,7 @@ const prepareDOMEvents = () => {
 	NOTE_AREA.addEventListener('click', editNote)
 	SHOW_TRASH_AREA_BTN.addEventListener('click', openTrash)
 	BACK_TO_NOTE_BTN.addEventListener('click', backToNotes)
+	// DELETE_NOTE_BTN.addEventListener('click', moveToTrash)
 }
 const activePopup = () => {
 	POPUP.style.display = 'flex'
@@ -96,6 +95,10 @@ const createNewNote = () => {
 	const noteContent = newNoteTemp.querySelector('.note__body-content')
 	const dateOfNote = newNoteTemp.querySelector('.note__date')
 	newNote.setAttribute('id', `${ID}`)
+
+	RETURN_NOTE_BTN = newNoteTemp.querySelector('.note__return-btn')
+	DELETE_NOTE_BTN = newNoteTemp.querySelector('.note__delete-btn')
+	DELETE_NOTE_BTN.setAttribute('onclick', `moveToTrash(${ID})`)
 
 	noteTitle.textContent = POPUP_TITLE_TEXTAREA.value
 	noteContent.textContent = POPUP_CONTENT_TEXTAREA.value
@@ -167,12 +170,17 @@ const backToNotes = () => {
 	BACK_TO_NOTE_BTN.style.display = 'none'
 	ADD_NOTE_BTN.style.display = 'inline-block'
 	SEARCH_NOTE_BTN.style.display = 'inline-block'
-	
-	if (NUMBER_OF_NOTE.textContent === '$') {
-		NUMBER_OF_NOTE.style.visibility = 'hidden'
-	} else {
-		NUMBER_OF_NOTE.style.visibility = 'visible'
-	}
+
+	NUMBER_OF_NOTE.textContent === '$'
+		? (NUMBER_OF_NOTE.style.visibility = 'hidden')
+		: (NUMBER_OF_NOTE.style.visibility = 'visible')
 }
+
+const moveToTrash = id => {
+	const noteToMove = document.getElementById(id)
+	NOTE_AREA.removeChild(noteToMove)
+	TRASH_AREA.appendChild(noteToMove)
+}
+
 
 document.addEventListener('DOMContentLoaded', main)

@@ -95,6 +95,12 @@ body .wrapper .note-wrapper .note-area .note__body {
   font-size: 1.5rem;
   cursor: pointer;
 }
+body .wrapper .note-wrapper .note-area .note__footer {
+  font-size: 1.3rem;
+  padding: 0.5em;
+  text-align: center;
+  background-color: rgb(34, 34, 34);
+}
 body .wrapper .note-wrapper .note-area .note__body::before {
   display: none;
   position: absolute;
@@ -111,12 +117,6 @@ body .wrapper .note-wrapper .note-area .note__body::before {
 }
 body .wrapper .note-wrapper .note-area .note__body:hover::before {
   display: block;
-}
-body .wrapper .note-wrapper .note-area .note__footer {
-  font-size: 1.3rem;
-  padding: 0.5em;
-  text-align: center;
-  background-color: rgb(34, 34, 34);
 }
 body .wrapper .note-wrapper .popup {
   background-color: black;
@@ -194,6 +194,52 @@ body .wrapper .note-wrapper .trash-area {
 }
 body .wrapper .note-wrapper .trash-area__heading {
   margin-bottom: 2em;
+}
+body .wrapper .note-wrapper .trash-area .note {
+  width: 21rem;
+  margin: 2em;
+  border-radius: 8px;
+  background-color: rgb(48, 48, 48);
+}
+body .wrapper .note-wrapper .trash-area .note__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em;
+  background-color: rgb(34, 34, 34);
+}
+body .wrapper .note-wrapper .trash-area .note__title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+body .wrapper .note-wrapper .trash-area .note button {
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 0.3em;
+}
+body .wrapper .note-wrapper .trash-area .note button:hover {
+  color: rgb(226, 192, 0);
+}
+body .wrapper .note-wrapper .trash-area .note__return-btn {
+  font-size: 1.4rem;
+}
+body .wrapper .note-wrapper .trash-area .note__delete-btn {
+  font-size: 1.6rem;
+}
+body .wrapper .note-wrapper .trash-area .note__body {
+  position: relative;
+  padding: 1.1em;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+body .wrapper .note-wrapper .trash-area .note__footer {
+  font-size: 1.3rem;
+  padding: 0.5em;
+  text-align: center;
+  background-color: rgb(34, 34, 34);
 }
 body .wrapper .footer {
   position: fixed;
