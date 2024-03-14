@@ -89,12 +89,12 @@ const closeSearchPopup = () => {
 }
 
 const noteSearch = e => {
-	const userText = e.target.value
+	const userText = e.target.value.toLowerCase()
 
 	NOTE_ARR.forEach(el => {
 		const noteId = el.getAttribute('id')
-		const firstGrandchild = el.children[0].children[0].textContent
-		const secondGrandchild = el.children[1].children[0].textContent
+		const firstGrandchild = el.children[0].children[0].textContent.toLowerCase()
+		const secondGrandchild = el.children[1].children[0].textContent.toLowerCase()
 
 		if (firstGrandchild.includes(userText) || secondGrandchild.includes(userText)) {
 			const noteToDisplay = document.getElementById(noteId)
@@ -117,6 +117,7 @@ const openPopup = () => {
 	POPUP_DONE_BTN.style.display = 'flex'
 	POPUP_TITLE_TEXTAREA.value = ''
 	POPUP_CONTENT_TEXTAREA.value = ''
+	closeSearchPopup()
 }
 
 const closePopup = () => {
