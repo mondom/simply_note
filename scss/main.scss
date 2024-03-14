@@ -103,7 +103,6 @@ body {
 				justify-content: center;
 				flex-wrap: wrap;
 
-				padding-top: 6em;
 				.note {
 					@include note-style;
 					&__body::before {

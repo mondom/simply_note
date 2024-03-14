@@ -26,6 +26,7 @@ let HEADER
 let ID = 1
 let NOTE_ARR = []
 let TRASH_ARR = []
+let NOTE_AREA_SEARCH_ARR = []
 
 const main = () => {
 	prepareDOMElements()
@@ -67,12 +68,41 @@ const prepareDOMEvents = () => {
 	BACK_TO_NOTE_BTN.addEventListener('click', backToNotes)
 	SEARCH_NOTE_BTN.addEventListener('click', activeSearchPopup)
 	CLOSE_SEARCH_POPUP_BTN.addEventListener('click', closeSearchPopup)
+	SEARCH_INPUT.addEventListener('keyup', noteSearch)
 }
 const activeSearchPopup = () => {
 	SEARCH_POPUP.classList.add('active')
+
+	if (SEARCH_POPUP.classList.contains('active')) {
+		NOTE_AREA.style.paddingTop = '6em'
+	}
 }
 const closeSearchPopup = () => {
+	SEARCH_INPUT.value = ''
 	SEARCH_POPUP.classList.remove('active')
+	if (!SEARCH_POPUP.classList.contains('active')) {
+		NOTE_AREA.style.paddingTop = '0'
+		NOTE_ARR.forEach(el => {
+			el.style.display = 'inline-block'
+		})
+	}
+}
+
+const noteSearch = e => {
+	const userText = e.target.value
+
+	NOTE_ARR.forEach(el => {
+		const noteId = el.getAttribute('id')
+		const firstGrandchild = el.children[0].children[0].textContent
+		const secondGrandchild = el.children[1].children[0].textContent
+
+		if (firstGrandchild.includes(userText) || secondGrandchild.includes(userText)) {
+			const noteToDisplay = document.getElementById(noteId)
+			noteToDisplay.style.display = 'inline-block'
+		} else {
+			el.style.display = 'none'
+		}
+	})
 }
 const activePopup = () => {
 	POPUP.style.display = 'flex'
@@ -130,25 +160,28 @@ const createNewNote = () => {
 
 	dateOfNote.textContent = `${day}.${month}.${year}`
 
-	
 	NOTE_AREA.appendChild(newNote)
 	NOTE_ARR.push(newNote)
-	
+
+	// const newNoteData = {
+	// 	title: noteTitle.textContent,
+	// 	content: noteContent.textContent
+	// };
+	// NOTE_AREA_SEARCH_ARR.push(newNoteData)
 
 	countNote()
 	ID++
 	closePopup()
 }
 
-
-
 const countNote = () => {
 	NUMBER_OF_NOTE.style.visibility = 'visible'
 	let amountNotes = NOTE_ARR.length
-	console.log(amountNotes);
-	
+
 	if (NOTE_ARR.length === 1) {
 		NUMBER_OF_NOTE.textContent = `${amountNotes} note`
+	} else if (NOTE_ARR.length === 0) {
+		NUMBER_OF_NOTE.style.visibility = 'hidden'
 	} else {
 		NUMBER_OF_NOTE.textContent = `${amountNotes} notes`
 	}
@@ -159,7 +192,6 @@ const countTrash = () => {
 	const countTrash = document.querySelector('.count-trash')
 
 	countTrash.textContent = amountTrash
-	
 }
 
 const editNote = e => {
@@ -218,6 +250,5 @@ const moveToTrash = id => {
 	TRASH_AREA.appendChild(noteToMove)
 	countTrash()
 }
-
 
 document.addEventListener('DOMContentLoaded', main)

@@ -10,7 +10,7 @@
 }
 
 @mixin note-style {
-	
+	display: inline-block;
 		width: 21rem;
 		margin: 2em;
 		border-radius: 8px;
@@ -48,24 +48,7 @@
 			font-size: 1.5rem;
 			cursor: pointer;
 		}
-		// &__body::before {
-		// 	display: none;
-		// 	position: absolute;
-		// 	top: -1em;
-		// 	right: -1em;
-		// 	width: 30%;
-		// 	content: 'edit note';
-		// 	text-align: center;
-		// 	font-size: 1rem;
-		// 	padding: 0.5em 0.8em;
-		// 	border-radius: 5px;
-		// 	background-color: $font-color;
-		// 	color: $background-color;
-		// }
-
-		// &__body:hover::before {
-		// 	display: block;
-		// }
+		
 
 		&__footer {
 			font-size: 1.3rem;

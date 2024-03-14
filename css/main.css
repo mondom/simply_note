@@ -99,9 +99,9 @@ body .wrapper .note-wrapper .note-area {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding-top: 6em;
 }
 body .wrapper .note-wrapper .note-area .note {
+  display: inline-block;
   width: 21rem;
   margin: 2em;
   border-radius: 8px;
@@ -242,6 +242,7 @@ body .wrapper .note-wrapper .trash-area__heading {
   margin-bottom: 2em;
 }
 body .wrapper .note-wrapper .trash-area .note {
+  display: inline-block;
   width: 21rem;
   margin: 2em;
   border-radius: 8px;
