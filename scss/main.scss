@@ -19,16 +19,61 @@ body {
 	color: $font-color;
 	font-family: 'Poppins', sans-serif;
 	.wrapper {
+		position: relative;
 		width: 100%;
 		max-width: 900px;
-		padding: 2em;
+		.search-popup {
+			position: absolute;
+			padding: 0.5em 1.5em;
+			margin: 0 2em;
+			display: flex;
+			align-items: flex-end;
+			flex-direction: column;
+			top: 0;
+			right: 0;
+			font-size: 1.2rem;
+			background-color: $background-color;
+			z-index: 1;
+			opacity: 0;
+			transition: transform 0.5s, opacity 0.3s;
+			.search-note {
+				position: relative;
+				border: none;
+				padding: 0.4em;
+				margin-top: 0.3em;
+				margin-left: 0.3em;
+				color: $font-color;
+				background-color: $dark-note-color;
+			}
+			.fa-chevron-right {
+				position: absolute;
+				top: 57%;
+				left: 0.3em;
+			}
+			.fa-xmark {
+				position: absolute;
+				top: 40%;
+				right: -1em;
+				padding: 0.5em;
+				font-size: 1.6rem;
+				cursor: pointer;
+				
+			}
+		}
+		.active {
+			transform: translateY(6em);
+			opacity: 1;
+		}
 
 		.heading {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 1em;
+			padding: 2em 2em 1em 2em;
 			margin-bottom: 2em;
+			background-color: $background-color;
+			z-index: 10;
+
 			&__title {
 				font-size: 2.5rem;
 			}
@@ -240,6 +285,24 @@ body {
 @media (min-width: 557px) {
 	body {
 		.wrapper {
+			.search-popup {
+				font-size: 1.5rem;
+				.search-note {
+					font-size: 1.5rem;
+				}
+				.fa-xmark {
+					position: absolute;
+					top: 37%;
+					
+					font-size: 2rem;
+					
+					
+				}
+			}
+			.active {
+				transform: translateY(5em);
+				opacity: 1;
+			}
 			.note-wrapper {
 				.note-area {
 					align-items: start;
