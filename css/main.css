@@ -25,16 +25,14 @@ body .wrapper .search-popup {
   position: absolute;
   padding: 0.5em 1.5em;
   margin: 0 2em;
-  display: flex;
+  display: none;
   align-items: flex-end;
   flex-direction: column;
-  top: 0;
+  transform: translateY(0);
   right: 0;
   font-size: 1.2rem;
   background-color: black;
   z-index: 1;
-  opacity: 0;
-  transition: transform 0.5s, opacity 0.3s;
 }
 body .wrapper .search-popup .search-note {
   position: relative;
@@ -50,17 +48,21 @@ body .wrapper .search-popup .fa-chevron-right {
   top: 57%;
   left: 0.3em;
 }
-body .wrapper .search-popup .fa-xmark {
+body .wrapper .search-popup .fa-xmark-popup {
   position: absolute;
   top: 40%;
   right: -1em;
   padding: 0.5em;
   font-size: 1.6rem;
   cursor: pointer;
+  transition: color 0.3s;
+}
+body .wrapper .search-popup .fa-xmark-popup:hover {
+  color: rgb(226, 192, 0);
 }
 body .wrapper .active {
   transform: translateY(6em);
-  opacity: 1;
+  display: flex;
 }
 body .wrapper .heading {
   display: flex;
@@ -97,6 +99,7 @@ body .wrapper .note-wrapper .note-area {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding-top: 6em;
 }
 body .wrapper .note-wrapper .note-area .note {
   width: 21rem;
@@ -357,14 +360,13 @@ body .wrapper .footer__show-trash .circle .count-trash {
   body .wrapper .search-popup .search-note {
     font-size: 1.5rem;
   }
-  body .wrapper .search-popup .fa-xmark {
+  body .wrapper .search-popup .fa-xmark-popup {
     position: absolute;
     top: 37%;
     font-size: 2rem;
   }
   body .wrapper .active {
     transform: translateY(5em);
-    opacity: 1;
   }
   body .wrapper .note-wrapper .note-area {
     align-items: start;

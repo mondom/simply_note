@@ -1,5 +1,8 @@
 let ADD_NOTE_BTN
 let SEARCH_NOTE_BTN
+let SEARCH_POPUP
+let SEARCH_INPUT
+let CLOSE_SEARCH_POPUP_BTN
 let BACK_TO_NOTE_BTN
 let RETURN_NOTE_BTN
 let DELETE_NOTE_BTN
@@ -49,6 +52,9 @@ const prepareDOMElements = () => {
 	HEADER = document.querySelector('.heading')
 	BACK_TO_NOTE_BTN = document.querySelector('.heading__back-btn')
 	COUNT_TRASH_CIRCLE = document.querySelector('.circle')
+	SEARCH_POPUP = document.querySelector('.search-popup')
+	SEARCH_INPUT = document.querySelector('.search-note')
+	CLOSE_SEARCH_POPUP_BTN = document.querySelector('.fa-xmark-popup')
 }
 
 const prepareDOMEvents = () => {
@@ -59,7 +65,14 @@ const prepareDOMEvents = () => {
 	NOTE_AREA.addEventListener('click', editNote)
 	SHOW_TRASH_AREA_BTN.addEventListener('click', openTrash)
 	BACK_TO_NOTE_BTN.addEventListener('click', backToNotes)
-	// DELETE_NOTE_BTN.addEventListener('click', moveToTrash)
+	SEARCH_NOTE_BTN.addEventListener('click', activeSearchPopup)
+	CLOSE_SEARCH_POPUP_BTN.addEventListener('click', closeSearchPopup)
+}
+const activeSearchPopup = () => {
+	SEARCH_POPUP.classList.add('active')
+}
+const closeSearchPopup = () => {
+	SEARCH_POPUP.classList.remove('active')
 }
 const activePopup = () => {
 	POPUP.style.display = 'flex'

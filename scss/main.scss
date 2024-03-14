@@ -26,16 +26,15 @@ body {
 			position: absolute;
 			padding: 0.5em 1.5em;
 			margin: 0 2em;
-			display: flex;
+			display: none;
 			align-items: flex-end;
 			flex-direction: column;
-			top: 0;
+			transform: translateY(0);
 			right: 0;
 			font-size: 1.2rem;
 			background-color: $background-color;
 			z-index: 1;
-			opacity: 0;
-			transition: transform 0.5s, opacity 0.3s;
+			
 			.search-note {
 				position: relative;
 				border: none;
@@ -50,19 +49,22 @@ body {
 				top: 57%;
 				left: 0.3em;
 			}
-			.fa-xmark {
+			.fa-xmark-popup {
 				position: absolute;
 				top: 40%;
 				right: -1em;
 				padding: 0.5em;
 				font-size: 1.6rem;
 				cursor: pointer;
-				
+				transition: color 0.3s;
+			}
+			.fa-xmark-popup:hover {
+				color: $hover-color;
 			}
 		}
 		.active {
 			transform: translateY(6em);
-			opacity: 1;
+			display: flex;
 		}
 
 		.heading {
@@ -101,6 +103,7 @@ body {
 				justify-content: center;
 				flex-wrap: wrap;
 
+				padding-top: 6em;
 				.note {
 					@include note-style;
 					&__body::before {
@@ -290,18 +293,14 @@ body {
 				.search-note {
 					font-size: 1.5rem;
 				}
-				.fa-xmark {
+				.fa-xmark-popup {
 					position: absolute;
 					top: 37%;
-					
 					font-size: 2rem;
-					
-					
 				}
 			}
 			.active {
 				transform: translateY(5em);
-				opacity: 1;
 			}
 			.note-wrapper {
 				.note-area {
