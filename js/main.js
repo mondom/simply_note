@@ -18,9 +18,11 @@ let NUMBER_OF_NOTE
 let REMOVE_ALL_TRASH_BTN
 let SHOW_TRASH_AREA_BTN
 let FOOTER
+let COUNT_TRASH_CIRCLE
 let HEADER
 let ID = 1
 let NOTE_ARR = []
+let TRASH_ARR = []
 
 const main = () => {
 	prepareDOMElements()
@@ -46,6 +48,7 @@ const prepareDOMElements = () => {
 	FOOTER = document.querySelector('.footer')
 	HEADER = document.querySelector('.heading')
 	BACK_TO_NOTE_BTN = document.querySelector('.heading__back-btn')
+	COUNT_TRASH_CIRCLE = document.querySelector('.circle')
 }
 
 const prepareDOMEvents = () => {
@@ -137,6 +140,14 @@ const countNote = () => {
 		NUMBER_OF_NOTE.textContent = `${amountNotes} notes`
 	}
 }
+const countTrash = () => {
+	COUNT_TRASH_CIRCLE.style.visibility = 'visible'
+	let amountTrash = TRASH_ARR.length
+	const countTrash = document.querySelector('.count-trash')
+
+	countTrash.textContent = amountTrash
+	
+}
 
 const editNote = e => {
 	if (e.target.classList.contains('note__body') || e.target.classList.contains('note__body-content')) {
@@ -189,8 +200,10 @@ const moveToTrash = id => {
 	const noteToMove = document.getElementById(id)
 	NOTE_AREA.removeChild(noteToMove)
 	countNote(ID)
-	NOTE_ARR.splice(noteToMove)
+	NOTE_ARR.splice(noteToMove, 1)
+	TRASH_ARR.push(noteToMove)
 	TRASH_AREA.appendChild(noteToMove)
+	countTrash()
 }
 
 
