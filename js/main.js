@@ -69,6 +69,7 @@ const prepareDOMEvents = () => {
 	CLOSE_SEARCH_POPUP_BTN.addEventListener('click', closeSearchPopup)
 	SEARCH_INPUT.addEventListener('keyup', noteSearch)
 	SEARCH_TRASH_INPUT.addEventListener('keyup', trashNoteSearch)
+	REMOVE_ALL_TRASH_BTN.addEventListener('click', deleteAllNotes)
 }
 const activeSearchPopup = () => {
 	SEARCH_POPUP.classList.add('active')
@@ -176,7 +177,6 @@ const createNewNote = () => {
 	permDeleteNoteBtn.style.display = 'none'
 	permDeleteNoteBtn.setAttribute('onclick', `deleteNote(${ID})`)
 
-
 	noteTitle.textContent = POPUP_TITLE_TEXTAREA.value
 	noteContent.textContent = POPUP_CONTENT_TEXTAREA.value
 
@@ -214,13 +214,11 @@ const countTrash = () => {
 	COUNT_TRASH_CIRCLE.style.visibility = 'visible'
 	let amountTrash = TRASH_ARR.length
 	const countTrash = document.querySelector('.count-trash')
-	if(amountTrash > 0){
+	if (amountTrash > 0) {
 		countTrash.textContent = amountTrash
-	}else{
+	} else {
 		COUNT_TRASH_CIRCLE.style.visibility = 'hidden'
 	}
-
-	
 }
 
 const editNote = e => {
@@ -275,8 +273,7 @@ const backToNotes = () => {
 	SHOW_TRASH_AREA_BTN.style.display = 'block'
 	NUMBER_OF_NOTE.style.visibility = 'visible'
 	closeSearchPopup()
-
-
+	countNote()
 }
 
 const moveToTrash = id => {
@@ -320,5 +317,10 @@ const deleteNote = id => {
 	countTrash()
 }
 
+const deleteAllNotes = () => {
+	TRASH_AREA.textContent = ''
+	TRASH_ARR = []
+	countTrash()
+}
 
 document.addEventListener('DOMContentLoaded', main)
