@@ -79,6 +79,7 @@ const activeSearchPopup = () => {
 
 	if (SEARCH_POPUP.classList.contains('active')) {
 		NOTE_AREA.style.paddingTop = '6em'
+		TRASH_AREA.style.paddingTop = '6em'
 	}
 }
 const closeSearchPopup = () => {
@@ -87,6 +88,7 @@ const closeSearchPopup = () => {
 	SEARCH_POPUP.classList.remove('active')
 	if (!SEARCH_POPUP.classList.contains('active')) {
 		NOTE_AREA.style.paddingTop = '0'
+		TRASH_AREA.style.paddingTop = '0'
 		NOTE_ARR.forEach(el => {
 			el.style.display = 'inline-block'
 		})
@@ -253,6 +255,7 @@ const openTrash = () => {
 	ADD_NOTE_BTN.style.display = 'none'
 	// SEARCH_NOTE_BTN.style.display = 'none'
 	NUMBER_OF_NOTE.style.visibility = 'hidden'
+	closeSearchPopup()
 }
 
 const backToNotes = () => {
@@ -263,10 +266,11 @@ const backToNotes = () => {
 	BACK_TO_NOTE_BTN.style.display = 'none'
 	ADD_NOTE_BTN.style.display = 'inline-block'
 	SEARCH_NOTE_BTN.style.display = 'inline-block'
+	closeSearchPopup()
 
-	NUMBER_OF_NOTE.textContent === '$'
-		? (NUMBER_OF_NOTE.style.visibility = 'hidden')
-		: (NUMBER_OF_NOTE.style.visibility = 'visible')
+	// NUMBER_OF_NOTE.textContent === '$'
+	// 	? (NUMBER_OF_NOTE.style.visibility = 'hidden')
+	// 	: (NUMBER_OF_NOTE.style.visibility = 'visible')
 }
 
 const moveToTrash = id => {
