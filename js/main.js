@@ -5,8 +5,8 @@ let SEARCH_INPUT
 let SEARCH_TRASH_INPUT
 let CLOSE_SEARCH_POPUP_BTN
 let BACK_TO_NOTE_BTN
-let RETURN_NOTE_BTN
-let DELETE_NOTE_BTN
+// let RETURN_NOTE_BTN
+// let DELETE_NOTE_BTN
 let NOTE
 let NOTE_AREA
 let POPUP_EDIT_DONE_BTN
@@ -27,7 +27,6 @@ let HEADER
 let ID = 1
 let NOTE_ARR = []
 let TRASH_ARR = []
-let NOTE_AREA_SEARCH_ARR = []
 
 const main = () => {
 	prepareDOMElements()
@@ -72,7 +71,6 @@ const prepareDOMEvents = () => {
 	CLOSE_SEARCH_POPUP_BTN.addEventListener('click', closeSearchPopup)
 	SEARCH_INPUT.addEventListener('keyup', noteSearch)
 	SEARCH_TRASH_INPUT.addEventListener('keyup', trashNoteSearch)
-	
 }
 const activeSearchPopup = () => {
 	SEARCH_POPUP.classList.add('active')
@@ -116,7 +114,7 @@ const trashNoteSearch = e => {
 
 	TRASH_ARR.forEach(el => {
 		const noteId = el.getAttribute('id')
-		console.log(noteId);
+		console.log(noteId)
 		const firstGrandchild = el.children[0].children[0].textContent.toLowerCase()
 		const secondGrandchild = el.children[1].children[0].textContent.toLowerCase()
 
@@ -169,9 +167,12 @@ const createNewNote = () => {
 	const dateOfNote = newNoteTemp.querySelector('.note__date')
 	newNote.setAttribute('id', `${ID}`)
 
-	RETURN_NOTE_BTN = newNoteTemp.querySelector('.note__return-btn')
-	DELETE_NOTE_BTN = newNoteTemp.querySelector('.note__delete-btn')
-	DELETE_NOTE_BTN.setAttribute('onclick', `moveToTrash(${ID}); countNote()`)
+	const returnNoteBtn = newNoteTemp.querySelector('.note__return-btn')
+	returnNoteBtn.style.display = 'none'
+	returnNoteBtn.setAttribute('onclick', `restoreNote(${ID})`)
+	const deleteNoteBtn = newNoteTemp.querySelector('.note__delete-btn')
+
+	deleteNoteBtn.setAttribute('onclick', `moveToTrash(${ID}); countNote();`)
 
 	noteTitle.textContent = POPUP_TITLE_TEXTAREA.value
 	noteContent.textContent = POPUP_CONTENT_TEXTAREA.value
@@ -216,8 +217,13 @@ const countTrash = () => {
 	COUNT_TRASH_CIRCLE.style.visibility = 'visible'
 	let amountTrash = TRASH_ARR.length
 	const countTrash = document.querySelector('.count-trash')
+	if(amountTrash > 0){
+		countTrash.textContent = amountTrash
+	}else{
+		COUNT_TRASH_CIRCLE.style.visibility = 'hidden'
+	}
 
-	countTrash.textContent = amountTrash
+	
 }
 
 const editNote = e => {
@@ -255,6 +261,8 @@ const openTrash = () => {
 	ADD_NOTE_BTN.style.display = 'none'
 	// SEARCH_NOTE_BTN.style.display = 'none'
 	NUMBER_OF_NOTE.style.visibility = 'hidden'
+	REMOVE_ALL_TRASH_BTN.style.display = 'block'
+	SHOW_TRASH_AREA_BTN.style.display = 'none'
 	closeSearchPopup()
 }
 
@@ -266,6 +274,9 @@ const backToNotes = () => {
 	BACK_TO_NOTE_BTN.style.display = 'none'
 	ADD_NOTE_BTN.style.display = 'inline-block'
 	SEARCH_NOTE_BTN.style.display = 'inline-block'
+	REMOVE_ALL_TRASH_BTN.style.display = 'none'
+	SHOW_TRASH_AREA_BTN.style.display = 'block'
+	NUMBER_OF_NOTE.style.visibility = 'visible'
 	closeSearchPopup()
 
 	// NUMBER_OF_NOTE.textContent === '$'
@@ -273,14 +284,31 @@ const backToNotes = () => {
 	// 	: (NUMBER_OF_NOTE.style.visibility = 'visible')
 }
 
-const moveToTrash = id => {
+const moveToTrash = (id) => {
 	const noteToMove = document.getElementById(id)
 	NOTE_AREA.removeChild(noteToMove)
 	countNote(ID)
 	NOTE_ARR.splice(noteToMove, 1)
 	TRASH_ARR.push(noteToMove)
 	TRASH_AREA.appendChild(noteToMove)
+	const returnNoteBtn = noteToMove.querySelector('.note__return-btn')
+	returnNoteBtn.style.display = 'inline-block'
 	countTrash()
 }
+
+const restoreNote = id => {
+	const noteToRestore = document.getElementById(id)
+	console.log(noteToRestore)
+	TRASH_AREA.removeChild(noteToRestore)
+	NOTE_AREA.appendChild(noteToRestore)
+	NOTE_ARR.push(noteToRestore)
+	TRASH_ARR.splice(noteToRestore, 1)
+	const returnNoteBtn = noteToRestore.querySelector('.note__return-btn')
+	returnNoteBtn.style.display = 'none'
+	countTrash()
+	countNote(ID)
+	NUMBER_OF_NOTE.style.visibility = 'hidden'
+}
+
 
 document.addEventListener('DOMContentLoaded', main)
