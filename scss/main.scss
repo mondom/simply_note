@@ -34,8 +34,8 @@ body {
 			font-size: 1.2rem;
 			background-color: $background-color;
 			z-index: 1;
-			
-			.search-note {
+
+			.search-note, .search-trash-note {
 				position: relative;
 				border: none;
 				padding: 0.4em;
@@ -43,6 +43,9 @@ body {
 				margin-left: 0.3em;
 				color: $font-color;
 				background-color: $dark-note-color;
+			}
+			.search-trash-note{
+				display: none;
 			}
 			.fa-chevron-right {
 				position: absolute;

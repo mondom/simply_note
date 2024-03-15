@@ -2,6 +2,7 @@ let ADD_NOTE_BTN
 let SEARCH_NOTE_BTN
 let SEARCH_POPUP
 let SEARCH_INPUT
+let SEARCH_TRASH_INPUT
 let CLOSE_SEARCH_POPUP_BTN
 let BACK_TO_NOTE_BTN
 let RETURN_NOTE_BTN
@@ -55,6 +56,7 @@ const prepareDOMElements = () => {
 	COUNT_TRASH_CIRCLE = document.querySelector('.circle')
 	SEARCH_POPUP = document.querySelector('.search-popup')
 	SEARCH_INPUT = document.querySelector('.search-note')
+	SEARCH_TRASH_INPUT = document.querySelector('.search-trash-note')
 	CLOSE_SEARCH_POPUP_BTN = document.querySelector('.fa-xmark-popup')
 }
 
@@ -69,6 +71,8 @@ const prepareDOMEvents = () => {
 	SEARCH_NOTE_BTN.addEventListener('click', activeSearchPopup)
 	CLOSE_SEARCH_POPUP_BTN.addEventListener('click', closeSearchPopup)
 	SEARCH_INPUT.addEventListener('keyup', noteSearch)
+	SEARCH_TRASH_INPUT.addEventListener('keyup', trashNoteSearch)
+	
 }
 const activeSearchPopup = () => {
 	SEARCH_POPUP.classList.add('active')
@@ -79,6 +83,7 @@ const activeSearchPopup = () => {
 }
 const closeSearchPopup = () => {
 	SEARCH_INPUT.value = ''
+	SEARCH_TRASH_INPUT.value = ''
 	SEARCH_POPUP.classList.remove('active')
 	if (!SEARCH_POPUP.classList.contains('active')) {
 		NOTE_AREA.style.paddingTop = '0'
@@ -104,6 +109,24 @@ const noteSearch = e => {
 		}
 	})
 }
+const trashNoteSearch = e => {
+	const userText = e.target.value.toLowerCase()
+
+	TRASH_ARR.forEach(el => {
+		const noteId = el.getAttribute('id')
+		console.log(noteId);
+		const firstGrandchild = el.children[0].children[0].textContent.toLowerCase()
+		const secondGrandchild = el.children[1].children[0].textContent.toLowerCase()
+
+		if (firstGrandchild.includes(userText) || secondGrandchild.includes(userText)) {
+			const noteToDisplay = document.getElementById(noteId)
+			noteToDisplay.style.display = 'inline-block'
+		} else {
+			el.style.display = 'none'
+		}
+	})
+}
+
 const activePopup = () => {
 	POPUP.style.display = 'flex'
 	NOTE_AREA.style.display = 'none'
@@ -222,15 +245,19 @@ const changeNote = () => {
 }
 
 const openTrash = () => {
+	SEARCH_TRASH_INPUT.style.display = 'block'
+	SEARCH_INPUT.style.display = 'none'
 	NOTE_AREA.style.display = 'none'
 	TRASH_AREA.style.display = 'flex'
-	BACK_TO_NOTE_BTN.style.display = 'flex'
+	BACK_TO_NOTE_BTN.style.display = 'inline-block'
 	ADD_NOTE_BTN.style.display = 'none'
-	SEARCH_NOTE_BTN.style.display = 'none'
+	// SEARCH_NOTE_BTN.style.display = 'none'
 	NUMBER_OF_NOTE.style.visibility = 'hidden'
 }
 
 const backToNotes = () => {
+	SEARCH_TRASH_INPUT.style.display = 'none'
+	SEARCH_INPUT.style.display = 'block'
 	NOTE_AREA.style.display = 'flex'
 	TRASH_AREA.style.display = 'none'
 	BACK_TO_NOTE_BTN.style.display = 'none'

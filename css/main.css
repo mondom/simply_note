@@ -34,7 +34,7 @@ body .wrapper .search-popup {
   background-color: black;
   z-index: 1;
 }
-body .wrapper .search-popup .search-note {
+body .wrapper .search-popup .search-note, body .wrapper .search-popup .search-trash-note {
   position: relative;
   border: none;
   padding: 0.4em;
@@ -42,6 +42,9 @@ body .wrapper .search-popup .search-note {
   margin-left: 0.3em;
   color: #fff;
   background-color: rgb(34, 34, 34);
+}
+body .wrapper .search-popup .search-trash-note {
+  display: none;
 }
 body .wrapper .search-popup .fa-chevron-right {
   position: absolute;
