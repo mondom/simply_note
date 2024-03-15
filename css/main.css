@@ -102,7 +102,7 @@ body .wrapper .note-wrapper .note-area {
 }
 body .wrapper .note-wrapper .note-area .note {
   display: inline-block;
-  width: 21rem;
+  width: 26rem;
   margin: 2em;
   border-radius: 8px;
   background-color: rgb(48, 48, 48);
@@ -115,7 +115,7 @@ body .wrapper .note-wrapper .note-area .note__heading {
   background-color: rgb(34, 34, 34);
 }
 body .wrapper .note-wrapper .note-area .note__title {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 body .wrapper .note-wrapper .note-area .note button {
@@ -243,7 +243,7 @@ body .wrapper .note-wrapper .trash-area__heading {
 }
 body .wrapper .note-wrapper .trash-area .note {
   display: inline-block;
-  width: 21rem;
+  width: 26rem;
   margin: 2em;
   border-radius: 8px;
   background-color: rgb(48, 48, 48);
@@ -256,7 +256,7 @@ body .wrapper .note-wrapper .trash-area .note__heading {
   background-color: rgb(34, 34, 34);
 }
 body .wrapper .note-wrapper .trash-area .note__title {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 body .wrapper .note-wrapper .trash-area .note button {

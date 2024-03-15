@@ -11,7 +11,7 @@
 
 @mixin note-style {
 	display: inline-block;
-		width: 21rem;
+		width: 26rem;
 		margin: 2em;
 		border-radius: 8px;
 		background-color: $note-color;
@@ -24,7 +24,7 @@
 			background-color: $dark-note-color;
 		}
 		&__title {
-			font-size: 1.6rem;
+			font-size: 1.4rem;
 			font-weight: bold;
 		}
 
