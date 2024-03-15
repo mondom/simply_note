@@ -136,7 +136,7 @@ body .wrapper .note-wrapper .note-area .note button:hover {
 body .wrapper .note-wrapper .note-area .note__return-btn {
   font-size: 1.4rem;
 }
-body .wrapper .note-wrapper .note-area .note__delete-btn {
+body .wrapper .note-wrapper .note-area .note__delete-btn, body .wrapper .note-wrapper .note-area .note__delete-btn-perm {
   font-size: 1.6rem;
 }
 body .wrapper .note-wrapper .note-area .note__body {
@@ -208,6 +208,7 @@ body .wrapper .note-wrapper .popup #popup-title {
   text-align: center;
 }
 body .wrapper .note-wrapper .popup #popup-text {
+  font-family: "Poppins", sans-serif;
   min-height: 15rem;
   max-height: 18rem;
 }
@@ -279,7 +280,7 @@ body .wrapper .note-wrapper .trash-area .note button:hover {
 body .wrapper .note-wrapper .trash-area .note__return-btn {
   font-size: 1.4rem;
 }
-body .wrapper .note-wrapper .trash-area .note__delete-btn {
+body .wrapper .note-wrapper .trash-area .note__delete-btn, body .wrapper .note-wrapper .trash-area .note__delete-btn-perm {
   font-size: 1.6rem;
 }
 body .wrapper .note-wrapper .trash-area .note__body {

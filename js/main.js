@@ -5,8 +5,6 @@ let SEARCH_INPUT
 let SEARCH_TRASH_INPUT
 let CLOSE_SEARCH_POPUP_BTN
 let BACK_TO_NOTE_BTN
-// let RETURN_NOTE_BTN
-// let DELETE_NOTE_BTN
 let NOTE
 let NOTE_AREA
 let POPUP_EDIT_DONE_BTN
@@ -170,9 +168,14 @@ const createNewNote = () => {
 	const returnNoteBtn = newNoteTemp.querySelector('.note__return-btn')
 	returnNoteBtn.style.display = 'none'
 	returnNoteBtn.setAttribute('onclick', `restoreNote(${ID})`)
-	const deleteNoteBtn = newNoteTemp.querySelector('.note__delete-btn')
 
+	const deleteNoteBtn = newNoteTemp.querySelector('.note__delete-btn')
 	deleteNoteBtn.setAttribute('onclick', `moveToTrash(${ID}); countNote();`)
+
+	const permDeleteNoteBtn = newNoteTemp.querySelector('.note__delete-btn-perm')
+	permDeleteNoteBtn.style.display = 'none'
+	permDeleteNoteBtn.setAttribute('onclick', `deleteNote(${ID})`)
+
 
 	noteTitle.textContent = POPUP_TITLE_TEXTAREA.value
 	noteContent.textContent = POPUP_CONTENT_TEXTAREA.value
@@ -189,12 +192,6 @@ const createNewNote = () => {
 
 	NOTE_AREA.appendChild(newNote)
 	NOTE_ARR.push(newNote)
-
-	// const newNoteData = {
-	// 	title: noteTitle.textContent,
-	// 	content: noteContent.textContent
-	// };
-	// NOTE_AREA_SEARCH_ARR.push(newNoteData)
 
 	countNote()
 	ID++
@@ -279,12 +276,10 @@ const backToNotes = () => {
 	NUMBER_OF_NOTE.style.visibility = 'visible'
 	closeSearchPopup()
 
-	// NUMBER_OF_NOTE.textContent === '$'
-	// 	? (NUMBER_OF_NOTE.style.visibility = 'hidden')
-	// 	: (NUMBER_OF_NOTE.style.visibility = 'visible')
+
 }
 
-const moveToTrash = (id) => {
+const moveToTrash = id => {
 	const noteToMove = document.getElementById(id)
 	NOTE_AREA.removeChild(noteToMove)
 	countNote(ID)
@@ -294,6 +289,10 @@ const moveToTrash = (id) => {
 	const returnNoteBtn = noteToMove.querySelector('.note__return-btn')
 	returnNoteBtn.style.display = 'inline-block'
 	countTrash()
+	const permDeleteBtn = noteToMove.querySelector('.note__delete-btn-perm')
+	permDeleteBtn.style.display = 'inline-block'
+	const deleteNoteBtn = noteToMove.querySelector('.note__delete-btn')
+	deleteNoteBtn.style.display = 'none'
 }
 
 const restoreNote = id => {
@@ -308,6 +307,17 @@ const restoreNote = id => {
 	countTrash()
 	countNote(ID)
 	NUMBER_OF_NOTE.style.visibility = 'hidden'
+	const permDeleteBtn = noteToRestore.querySelector('.note__delete-btn-perm')
+	permDeleteBtn.style.display = 'none'
+	const deleteNoteBtn = noteToRestore.querySelector('.note__delete-btn')
+	deleteNoteBtn.style.display = 'inline-block'
+}
+
+const deleteNote = id => {
+	const noteToDelete = document.getElementById(id)
+	TRASH_AREA.removeChild(noteToDelete)
+	TRASH_ARR.splice(noteToDelete, 1)
+	countTrash()
 }
 
 
