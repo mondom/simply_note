@@ -254,7 +254,6 @@ const openTrash = () => {
 	TRASH_AREA.style.display = 'flex'
 	BACK_TO_NOTE_BTN.style.display = 'inline-block'
 	ADD_NOTE_BTN.style.display = 'none'
-	// SEARCH_NOTE_BTN.style.display = 'none'
 	NUMBER_OF_NOTE.style.visibility = 'hidden'
 	REMOVE_ALL_TRASH_BTN.style.display = 'block'
 	SHOW_TRASH_AREA_BTN.style.display = 'none'
